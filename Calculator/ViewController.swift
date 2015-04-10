@@ -38,6 +38,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func clearOperands(sender: UIButton) {
+        display.text = "0"
+        isDecimalValue = false
+        userIsTying = false
+        operandStack.removeAll(keepCapacity: false)
+    }
     @IBAction func appendDecimal(sender: UIButton) {
         if(isDecimalValue){
             return
