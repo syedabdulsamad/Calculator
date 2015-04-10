@@ -199,12 +199,18 @@
                                 <state key="normal" title=".">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="appendDecimal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="x4c-FI-dor"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhm-cW-p9g">
                                 <rect key="frame" x="360" y="67" width="104" height="99"/>
-                                <state key="normal">
+                                <state key="normal" title="➜">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="removeDigit" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8oe-Mm-SW4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De8-te-SR6">
                                 <rect key="frame" x="136" y="67" width="104" height="99"/>

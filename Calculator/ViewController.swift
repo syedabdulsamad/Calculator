@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
-    
+    var isDecimalValue = false
     var userIsTying = false
     
     @IBAction func operate(sender: UIButton) {
@@ -30,11 +30,32 @@ class ViewController: UIViewController {
                 performOperation {$1 / $0}
             case "√":
                 performOperation() {sqrt($0)}
+            case "sin":
+                performOperation() {sin($0)}
+            case "cos":
+                performOperation() {cos($0)}
         default: break
         }
     }
     
+    @IBAction func appendDecimal(sender: UIButton) {
+        if(isDecimalValue){
+            return
+        }
+        isDecimalValue = true
+        appendDigit(sender)
+    }
     
+    @IBAction func removeDigit() {
+        var updatedText = display.text!
+        if(countElements(updatedText) <= 1){
+            display.text! = "0"
+            userIsTying = false
+            return
+        }
+        updatedText = display.text!.substringWithRange(Range<String.Index>(start: updatedText.startIndex, end: advance(updatedText.endIndex, -1)))
+        display.text = updatedText;
+    }
     @IBAction func appendDigit(sender: UIButton) {
         let digit =  sender.currentTitle!
         println("digit = \(digit)")
