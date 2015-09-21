@@ -54,17 +54,17 @@ class ViewController: UIViewController {
     
     @IBAction func removeDigit() {
         var updatedText = display.text!
-        if(countElements(updatedText) <= 1){
+        if updatedText.characters.count <= 1 {
             display.text! = "0"
             userIsTying = false
             return
         }
-        updatedText = display.text!.substringWithRange(Range<String.Index>(start: updatedText.startIndex, end: advance(updatedText.endIndex, -1)))
+        updatedText = display.text!.substringWithRange(Range<String.Index>(start: updatedText.startIndex, end: updatedText.endIndex.advancedBy(-1)))
         display.text = updatedText;
     }
     @IBAction func appendDigit(sender: UIButton) {
         let digit =  sender.currentTitle!
-        println("digit = \(digit)")
+        print("digit = \(digit)")
         if(!userIsTying){
             userIsTying = true
             display.text = sender.currentTitle!
@@ -88,7 +88,19 @@ class ViewController: UIViewController {
     @IBAction func enter() {
         userIsTying = false
         operandStack.append(displayValue)
-        println("operandstack : \(operandStack)" )
+        print("operandstack : \(operandStack)" )
+    }
+    
+    @IBAction func equals() {
+        userIsTying = false
+        print("operandstack : \(operandStack)")
+        evaluate()
+        
+        
+        
+    }
+    
+    func evaluate() {
     }
     
     func performOperation(operation: (Double, Double) ->Double){
@@ -97,7 +109,7 @@ class ViewController: UIViewController {
             enter()
         }
     }
-    
+    @nonobjc
     func performOperation(operation: Double ->Double){
         if (operandStack.count >= 1){
             displayValue = operation( operandStack.removeLast())
